@@ -1,0 +1,16 @@
+add_library(
+    ${LIB_NAME}_OPS
+    OBJECT
+    ${CMAKE_CURRENT_SOURCE_DIR}/add_op.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/op_init.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/relu_op.cpp
+)
+
+set_target_properties(${LIB_NAME}_OPS
+    PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+    CXX_VISIBILITY_PRESET "hidden"
+    VISIBILITY_INLINES_HIDDEN 1
+)
+
+set_property(GLOBAL APPEND PROPERTY ${LIB_NAME}_DEPS $<TARGET_OBJECTS:${LIB_NAME}_OPS>)

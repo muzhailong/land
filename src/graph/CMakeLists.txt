@@ -1,0 +1,17 @@
+add_library(
+    ${LIB_NAME}_GRAPH
+    OBJECT
+    ${CMAKE_CURRENT_SOURCE_DIR}/plugin_graph.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/optimizer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tf_buffer.cpp
+)
+
+set_target_properties(${LIB_NAME}_GRAPH
+    PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+
+    # CXX_VISIBILITY_PRESET "hidden"
+    # VISIBILITY_INLINES_HIDDEN 1
+)
+
+set_property(GLOBAL APPEND PROPERTY ${LIB_NAME}_DEPS $<TARGET_OBJECTS:${LIB_NAME}_GRAPH>)
